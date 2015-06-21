@@ -1,0 +1,12 @@
+Latitude: 30.315, Longitude: -97.834
+<bounds minlon="-98.21200" minlat="29.93100" maxlon="-97.23400" maxlat="30.67000" origin="http://www.openstreetmap.org/api/0.6"/>
+http://wiki.openstreetmap.org/wiki/Austin,_Texas
+
+Austin is the state capital of Texas, the Lone Star state. It is one of the largest cities in the United States (11th in metropolitan population)
+and the fourth-largest in Texas. The city itself is situated along the Colorado River, at the intersection of four major ecological regions, which give 
+Austin its uniquely diverse climate that embodies characteristics of both the desert and the tropics. It is a major tech and cultural hub, home of the
+University of Texas, Austin, and, frankly, is somewhere I would have loved to have gone to college (though New York isn't shabby either). 
+
+That's my reason for choosing it: a college town, with the state's best public university; a cultural gem, host of film and music festivals, home to artists
+and writers; a tech hub, with video game studios, research facilities, and defense industry establishments alike. All of this nestled in a green oasis situated
+in the Texan drylands. 

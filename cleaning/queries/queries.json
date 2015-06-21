@@ -1,0 +1,94 @@
+{
+    "get_created_by": {"pipeline" : [
+        {"$match": {"created_by": {"$exists": true}}},
+        {"$group": {"_id": {"created_by": "$created_by"},
+                       "count": {"$sum": 1}}},
+        {"$sort": {"count": -1}},
+        {"$limit": 10}
+        ]
+    },
+    "get_unique_users": {"pipeline" : [
+        {"$group" : {"_id": {"uid" : "$created.uid"}}},
+        {"$group" : {"_id": "Number of unique users",
+                        "count": {"$sum": 1}}}
+        ]
+    },
+    "get_postal_codes": {"pipeline" : [
+        {"$group" : {"_id": {"postal code": "$address.postcode"},
+                        "count": {"$sum": 1}}},
+        {"$sort": {"count": -1}}
+        ]
+    },
+    "get_amenities": {"pipeline": [
+        {"$group" : {"_id": {"amenity": "$amenity"},
+                        "count": {"$sum": 1}}},
+        {"$sort": {"count": -1}}
+        ]
+    },
+    "get_unique_amenities": {"pipeline": [
+        {"$group" : {"_id": {"amenity": "$amenity"},
+                        "count": {"$sum": 1}}},
+        {"$group": {"_id": "Number of unique amenities",
+                       "count": {"$sum": 1}}}
+        ]
+    },
+    "get_street_names": {"pipeline": [
+        {"$match" : {"address.street": {"$exists": true}}},
+        {"$project": {"_id": "$address.street"}}
+        ]
+    },
+    "get_num_streets": {"pipeline": [
+        {"$match" : {"address.street": {"$exists": true}}},
+        {"$group": {"_id": "Number of docs with streets",
+                       "count": {"$sum": 1}}}
+        ]
+    },
+    "get_most_popular_amenities": {"pipeline": [
+        {"$match" : {"amenity": {"$exists": true}}},
+        {"$group" : {"_id": {"amenity": "$amenity"},
+                        "count": {"$sum": 1}}},
+        {"$sort" : {"count": -1}},
+        {"$limit" : 10}
+        ]
+    },
+    "get_fast_food" : {"pipeline": [
+        {"$match" : {"amenity": "$exists",
+                       "amenity": "fast_food"}},
+        {"$group" : {"_id": "$name",
+                       "count": {"$sum": 1}}},
+        {"$sort" : {"count": -1}},
+        {"$limit" : 10}
+        ]
+    },
+    "get_fuel" : {"pipeline": [
+        {"$match" : {"amenity": "$exists",
+                        "name": {"$exists": true},
+                        "amenity": "fuel"}},
+        {"$group" : {"_id": "$name",
+                        "count": {"$sum": 1}}},
+        {"$sort" : {"count": -1}},
+        {"$limit" : 10}
+        ]
+    },
+    "get_shelter" : {"pipeline": [
+        {"$match" : {"amenity": "$exists",
+                        "amenity": "shelter"}},
+        {"$group" : {"_id": "$name",
+                        "count": {"$sum": 1}}},
+        {"$sort" : {"count": -1}},
+        {"$limit" : 10}
+        ]
+    },
+    "get_shelter_type" : {"pipeline": [
+        {"$match" : {"amenity": "$exists",
+                        "amenity": "shelter"}},
+        {"$group" : {"_id": "$shelter_type",
+                        "count": {"$sum": 1}}},
+        {"$sort" : {"count": -1}},
+        {"$limit" : 10}
+        ]
+    }
+
+}
+
+
